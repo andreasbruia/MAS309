@@ -1,0 +1,16 @@
+[StartTime]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=1s
+[SolverState]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=2
+[MainFrame]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=No
+[SolverType]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=Linear Analysis
+[StudyType]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=0
+[StudyName]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=Trykk_80mm
+[Solver]
+Vinkeljern_80x80x8-Trykk_80mm.MFC=Sparse

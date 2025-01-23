@@ -12,7 +12,7 @@ F = m*g; %Prøver å ikke fordele den, deretter dele på to
 h = 63; %mm
 
 %Bolt
-d = 12; %mm
+d = 8; %mm
 A_b = pi/4 * (d)^2; %mm^2
 l_b = 140; %mm dette tallet ble bare satt må nok endres
 
@@ -26,10 +26,10 @@ S_ut = 830; %MPa
 %Antar preload 90% slik som i oppgaven kan spørre om dette er riktig
 F_i = 0.75 * S_p * A_t;
 
-%% Skjekker antall bolter (må dette gjøres?)
+%% Primary shear
 N_b = 4;
-%bolt_skjekk = (pi*D_b)/(N_b*d);
 
 Vbolt = F/N_b
 
-Ffrik = F_i*0.15
+my = 0.15; %stål mot stål - Jon Haugan
+Ffrik = F_i*my
