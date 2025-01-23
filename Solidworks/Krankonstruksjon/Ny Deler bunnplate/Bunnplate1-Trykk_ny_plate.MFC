@@ -1,0 +1,16 @@
+[StartTime]
+Bunnplate1-Trykk_ny_plate.MFC=2s
+[SolverState]
+Bunnplate1-Trykk_ny_plate.MFC=2
+[MainFrame]
+Bunnplate1-Trykk_ny_plate.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+Bunnplate1-Trykk_ny_plate.MFC=No
+[SolverType]
+Bunnplate1-Trykk_ny_plate.MFC=Linear Analysis
+[StudyType]
+Bunnplate1-Trykk_ny_plate.MFC=0
+[StudyName]
+Bunnplate1-Trykk_ny_plate.MFC=Trykk_ny_plate
+[Solver]
+Bunnplate1-Trykk_ny_plate.MFC=Sparse
