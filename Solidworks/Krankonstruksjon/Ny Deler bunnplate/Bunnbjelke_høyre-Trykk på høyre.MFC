@@ -1,9 +1,17 @@
 [StartTime]
+<<<<<<< Updated upstream
 Bunnbjelke_høyre-Trykk på høyre.MFC=32s
 [SolverState]
 Bunnbjelke_høyre-Trykk på høyre.MFC=2
 [MainFrame]
 Bunnbjelke_høyre-Trykk på høyre.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+=======
+Bunnbjelke_høyre-Trykk på høyre.MFC=19s
+[SolverState]
+Bunnbjelke_høyre-Trykk på høyre.MFC=2
+[MainFrame]
+Bunnbjelke_høyre-Trykk på høyre.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMMBAAAAAHCBAAAAAEDDAAAAAKPBAAAAA
+>>>>>>> Stashed changes
 [ShowMin]
 Bunnbjelke_høyre-Trykk på høyre.MFC=No
 [SolverType]
