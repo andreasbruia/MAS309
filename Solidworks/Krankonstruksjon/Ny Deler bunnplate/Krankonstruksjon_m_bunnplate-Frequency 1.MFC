@@ -3,7 +3,7 @@ Krankonstruksjon_m_bunnplate-Frequency 1.MFC=
 [SolverState]
 Krankonstruksjon_m_bunnplate-Frequency 1.MFC=2
 [MainFrame]
-Krankonstruksjon_m_bunnplate-Frequency 1.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+Krankonstruksjon_m_bunnplate-Frequency 1.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMMBAAAAAHCBAAAAAEDDAAAAAKPBAAAAA
 [ShowMin]
 Krankonstruksjon_m_bunnplate-Frequency 1.MFC=yes
 [SolverType]
@@ -14,3 +14,5 @@ Krankonstruksjon_m_bunnplate-Frequency 1.MFC=-1
 [Solver]
 Krankonstruksjon_m_bunnplate-Frequency 1.MFC=Sparse
 [StudyName1]
+[Dynamic]
+Krankonstruksjon_m_bunnplate-Frequency 1.MFC=0
