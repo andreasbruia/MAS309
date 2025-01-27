@@ -14,3 +14,5 @@ Krankonstruksjon_m_bunnplate-Frequency 1.MFC=-1
 [Solver]
 Krankonstruksjon_m_bunnplate-Frequency 1.MFC=Sparse
 [StudyName1]
+[Dynamic]
+Krankonstruksjon_m_bunnplate-Frequency 1.MFC=0
