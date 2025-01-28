@@ -36,3 +36,5 @@ Vbolt = F/N_b
 my = 0.15; %stål mot stål - Jon Haugan
 %Friksjonskraft fra hver bolt
 Ffrik = F_i*my
+
+Sikkerhetsfaktor = Ffrik/Vbolt
