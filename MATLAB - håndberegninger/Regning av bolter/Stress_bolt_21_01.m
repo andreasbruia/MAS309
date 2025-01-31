@@ -106,3 +106,5 @@ Ffrik = F_i*0.15
 % %Secundary shear
 % 
 % %Bending
+
+
