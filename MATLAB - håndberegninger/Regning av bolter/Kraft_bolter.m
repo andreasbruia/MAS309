@@ -38,3 +38,4 @@ my = 0.15; %stål mot stål - Jon Haugan
 Ffrik = F_i*my
 
 Sikkerhetsfaktor = Ffrik/Vbolt
+
