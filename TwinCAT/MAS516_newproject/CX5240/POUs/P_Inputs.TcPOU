@@ -60,7 +60,7 @@ fbPressureWinch_A_Input(
 );
 
 fbPressureWinch_B_Output(
-	nRawInput := G_IO.fPressureCylinderA,
+	nRawInput := G_IO.fPressureWinchB,
 	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
 	fOutput => G_Sensors.fPressureWinchB
 );

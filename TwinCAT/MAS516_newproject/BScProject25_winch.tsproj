@@ -59,14 +59,11 @@
 				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
-				<Task Id="4" Priority="30" CycleTime="2000000" AmsPort="351" DisableFpExceptions="true" AdtTasks="true">
-					<Name>VISU_TASK</Name>
-				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{CCD62B6E-91A9-4EE1-BE4A-2C5BBAFD4EEA}" Name="CX5240" PrjFilePath="CX5240\CX5240.plcproj" TmcFilePath="CX5240\CX5240.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{EF5D5415-2460-8182-ED59-7926990F53EB}" TmcPath="CX5240\CX5240.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E6FC28E0-A79C-C1BF-0127-C6275E675094}" TmcPath="CX5240\CX5240.tmc">
 					<Name>CX5240 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -163,15 +160,6 @@
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>G_IO.fPressureCylinderA</Name>
-							<Comment><![CDATA[ This is Prusser BWinch now]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>G_IO.fPressureCylinderB</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>G_IO.fPressureSupply</Name>
 							<Type>INT</Type>
 						</Var>
@@ -187,6 +175,10 @@
 							<Name>G_IO.bTestNew</Name>
 							<Comment><![CDATA[ New Test]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_IO.nTestNew</Name>
+							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<UnrestoredVarLinks ImportTime="2023-11-23T12:24:08">
@@ -1615,6 +1607,9 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		<OwnerA Name="TIPC^CX5240^CX5240 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1859)">
 				<Link VarA="PlcTask Inputs^G_IO.bTestNew" VarB="Channel 1^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL3174)">
+				<Link VarA="PlcTask Inputs^G_IO.nTestNew" VarB="AI Standard Channel 1^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 14 (EK1818)">
 				<Link VarA="PlcTask Inputs^G_IO.bEmgOk" VarB="Channel 1^Input"/>
