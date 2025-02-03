@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.11">
+  <POU Name="P_Outputs" Id="{05725e2c-789e-4faf-9ddc-3f7ec72a2093}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Outputs
+VAR
+	fbWinchValveOutput 				: FB_ValveOutput;
+	fbDisplacementValveOutput 		: FB_DisplacementValveOutput;
+	eStatus 						: E_Status; 
+	bEnableWinch 					: BOOL;
+	bEnableDisplacement 			: BOOL;
+	fDisplacementControlSignal  	: LREAL;
+	fDisplacementNormalizedInput 	: LREAL := 1.0;
+	bEndStopNegActive 				: BOOL;
+	bEndStopPosActive 				: BOOL;
+	fWinchValveNormalizedInput  	: LREAL;
+	fWinchValveInput 				: LREAL;
+	bEnableMotion 					: BOOL;	
+	bEnableValveOutputWinch 		: BOOL; 
+	bEnableValveOutputDisp	 		: BOOL; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF MAIN.eStatus = E_Status.Running THEN
+	G_IO.bEnablePCDV := TRUE;
+	G_IO.bWinchValveEnable := TRUE;
+ELSE
+	G_IO.bEnablePCDV := FALSE;	
+	G_IO.bWinchValveEnable := FALSE;
+END_IF
+
+bEnableMotion := G_IO.bWinchEnable;
+
+///////////////////// Winch //////////////////////////////
+IF (MAIN.eStatus = E_Status.Running) AND bEnableMotion THEN 
+	G_IO.bOpenBrakes := TRUE;
+	bEnableWinch := TRUE;
+ELSE
+	G_IO.bOpenBrakes := FALSE;
+	bEnableWinch := FALSE;
+END_IF
+
+///////////////////// Displacement //////////////////////////////
+IF (MAIN.eStatus = E_Status.Running) AND G_IO.bDisplacementEnable THEN 
+	bEnableDisplacement := TRUE;
+ELSE
+	bEnableDisplacement := FALSE;
+END_IF
+
+fWinchValveInput := G_Sensors.fJoystickNormalizedY;
+
+IF P_MotionControl.fWinchPos < G_Parameters.stParam.fWinchEndStopNeg  AND NOT(HMI.bEndStopOverride) THEN
+	bEndStopPosActive := FALSE;
+	bEndStopNegActive := TRUE;
+	fWinchValveNormalizedInput := LIMIT(-1.0, fWinchValveInput, 0.0);
+ELSIF P_MotionControl.fWinchPos > G_Parameters.stParam.fWinchEndStopPos AND NOT(HMI.bEndStopOverride) THEN
+	bEndStopPosActive := TRUE;
+	bEndStopNegActive := FALSE;
+	fWinchValveNormalizedInput := LIMIT(0, fWinchValveInput, 1.0);
+ELSE
+	bEndStopPosActive := FALSE;
+	bEndStopNegActive := FALSE;
+	fWinchValveNormalizedInput := fWinchValveInput;
+END_IF
+
+fbWinchValveOutput(
+	bEnable := bEnableWinch,
+	bDeadBandCompOn := G_Parameters.stParam.bWinchDeadBandCompOn,
+	stValveDeadBand := G_Parameters.stParam.stWinchValveDeadBand,
+	fNormalizedInput := fWinchValveNormalizedInput,
+	bEnableValveOutput => bEnableValveOutputWinch,
+	nOutput => G_IO.fWinchValveOut
+);
+
+IF NOT(bEnableDisplacement) THEN
+	fDisplacementControlSignal := fDisplacementNormalizedInput; 
+ELSE	
+	fDisplacementControlSignal := G_Sensors.fJoystickNormalizedZ;
+END_IF
+
+fbDisplacementValveOutput(
+	bEnable := (MAIN.eStatus = E_Status.Running),
+	bDeadBandCompOn := G_Parameters.stParam.bDisplacementDeadBandCompOn,
+	stValveDeadBand := G_Parameters.stParam.stDisplacementValveDeadBand,
+	fNormalizedInput := fDisplacementControlSignal,
+	bEnableValveOutput => bEnableValveOutputDisp,
+	nOutput => G_IO.fWinchPDCVOut
+);]]></ST>
+    </Implementation>
+    <LineIds Name="P_Outputs">
+      <LineId Id="138" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="388" Count="0" />
+      <LineId Id="386" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="510" Count="0" />
+      <LineId Id="155" Count="4" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="246" Count="0" />
+      <LineId Id="200" Count="1" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="508" Count="1" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="332" Count="7" />
+      <LineId Id="341" Count="2" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="309" Count="0" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="481" Count="0" />
+      <LineId Id="212" Count="0" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="218" Count="0" />
+      <LineId Id="229" Count="0" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="186" Count="7" />
+      <LineId Id="185" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
