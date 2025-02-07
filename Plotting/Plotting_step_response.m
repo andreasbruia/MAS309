@@ -1,0 +1,19 @@
+clc; clear; close all;
+
+out = sim('Step_transferfunksjon'); % Kjør Simulink-modellen
+
+figure;
+hold on;
+
+plot(out.tout, out.Step_response_100.signals.values, 'r', 'LineWidth', 2); % Rød linje
+plot(out.tout, out.Step_response_75.signals.values, 'b', 'LineWidth', 2); % Blå linje
+plot(out.tout, out.Step_response_50.signals.values, 'm', 'LineWidth', 2); % Lilla lnje
+plot(out.tout, out.Step_response_25.signals.values, 'g', 'LineWidth', 2); % Grønn linje
+
+xlabel('Time (s)');
+ylabel('Response');
+
+legend('Step Response 100', 'Step Response 75', 'Step Response 50', 'Step Response 25');
+grid on;
+title('Step response of transfer functions');
+hold off;
