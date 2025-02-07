@@ -1,0 +1,76 @@
+Id;Default
+455;%2.1f
+509;%2.2f
+108;%f
+308;%i
+805;%I
+528;$'amplitude
+341;A
+810;Actvting Log P
+221;Actvting Log Plat
+505;Actvting Log Pos
+560;Amplitud
+159;Amplitude
+639;bar
+175;Controlelr
+786;Controller
+847;D
+489;END STOP OVERRIDE
+897;END STOP OVERRIDE 
+141;GO TO SETTINGS
+499;I
+490;Main
+911;Main Screen
+508;Motion Control
+934;MOTION LIMIT
+673;Motion Limit
+176;MOTION LIMIT: OFF
+449;MOTION LIMITATION
+802;MOTION LIMITATION: OFF
+896;OVERRIDE
+993;P
+312;PA bar
+288;PA Winch bar
+641;PB bar
+622;PI COntroler
+326;PI Controler
+878;PI Displacement Control
+623;PI Gain DC
+962;PI Gain P
+177;PI Gain SC
+28;PI Primary Control
+144;PI Secondary Control
+68;PID
+907;PID Contoler
+714;PID Controller
+309;Position Logging
+953;Screen
+358;Secondary Control
+699;Secondry
+663;Secondry  swicher Primery
+725;Secondry Control
+395;Secondry Ish
+17;Secondry Swicher Primery
+238;Setings
+169;Settings
+590;Sin AmplitudContoler
+156;Sin TimeP Contoler
+94;Sin Wave
+613;Sin Wave Contoler
+420;Sine Motion Off/On
+636;Sine Wave
+818;Start Mual
+898;Time
+26;Time P
+140;Time Periode [s]
+844;TimeP
+826;TimePTime
+402;to Main
+655;Togel Swich Motion Control
+469;TURN ON IN SETTINGS
+191;Visualisation
+345;Visualiztion
+718;WARNING
+113;Warning ON
+628;Wave Amplitude [m]
+592;Working Progres
