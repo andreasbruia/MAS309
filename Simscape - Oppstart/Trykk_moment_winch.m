@@ -11,3 +11,4 @@ trykk = 70*10^5;
 Masse = (D*trykk)/(2*pi*g*r)
 
 
+trykkp = ((2*pi*24)/250) *10
