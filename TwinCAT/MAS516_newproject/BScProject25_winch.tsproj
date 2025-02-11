@@ -63,7 +63,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{CCD62B6E-91A9-4EE1-BE4A-2C5BBAFD4EEA}" Name="CX5240" PrjFilePath="CX5240\CX5240.plcproj" TmcFilePath="CX5240\CX5240.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CF61FCCA-70AD-E4AB-BA9F-5862AE19C4D3}" TmcPath="CX5240\CX5240.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{5D866353-C97E-03BD-5722-084D8CE5E764}" TmcPath="CX5240\CX5240.tmc">
 					<Name>CX5240 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -89,6 +89,10 @@
 						<Var>
 							<Name>G_IO.fWinchValveOut</Name>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_IO.OutTestNew</Name>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -1607,6 +1611,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		<OwnerA Name="TIPC^CX5240^CX5240 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1859)">
 				<Link VarA="PlcTask Inputs^G_IO.bTestNew" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Outputs^G_IO.OutTestNew" VarB="Channel 9^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL3174)">
 				<Link VarA="PlcTask Inputs^G_IO.nTestNew" VarB="AI Standard Channel 1^Value"/>
