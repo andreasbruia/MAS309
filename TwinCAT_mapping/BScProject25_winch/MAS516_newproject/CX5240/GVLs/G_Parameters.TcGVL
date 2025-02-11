@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.11">
-  <GVL Name="G_Parameters" Id="{669ea1f2-07fe-413d-92e6-ffdffa329b8e}">
-    <Declaration><![CDATA[{attribute 'qualified_only'}
-VAR_GLOBAL
-stParam : ST_Parameters;
-END_VAR]]></Declaration>
-  </GVL>
-</TcPlcObject>
