@@ -38,6 +38,7 @@ VAR_GLOBAL
 	// New Test
 	bTestNew AT %I* : BOOL;
 	nTestNew AT %I* : INT;
+	OutTestNew AT %Q* : BOOL;
 	
 END_VAR]]></Declaration>
   </GVL>
