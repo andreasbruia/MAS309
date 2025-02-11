@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_HMI" Id="{bc7b7dbf-743d-4b40-85bd-31d52f5cea50}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_HMI
+
+VAR
+    //bBlink : BOOL; // This variable toggles to create the blinking effect.
+    tBlinkTimer : TON; // TON timer for controlling the blink rate.
+
+	
+	tSampleTimer: TON; // Timer for controlling the sampling rate
+    nIndex: INT := 1; // Index for the next sample to be stored
+
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+HMI.bData1 := HMI.bP_PI; 
+G_IO.P_Gain := HMI.bP_PI;
+
+HMI.bDataP_DC := HMI.bProtielGainP_DC; 
+HMI.bDataP_DC := HMI.bProtielGainP_DC; 
+
+
+HMI.bData2 := HMI.bI_PI; 
+G_IO.I_Gain := HMI.bI_PI;
+// Enbiling the Ovrider fore END Stop //// 
+/// HMI.bEndStopOverride := 
+
+ 
+
+// Set the timer. It will start counting when IN is TRUE and reset when IN is FALSE.
+tBlinkTimer(IN := NOT tBlinkTimer.Q, PT := T#1S); // The timer period is set to 1 second.
+
+// Toggle the blink variable when the timer elapses (Q turns TRUE).
+IF HMI.bEndStopOverride THEN
+	IF tBlinkTimer.Q THEN
+		HMI.bBlink := NOT HMI.bBlink;
+	END_IF;
+ELSE 
+	HMI.bBlink := FALSE;
+	
+END_IF; 
+
+
+IF HMI.bSwichForPlot THEN
+	IF tBlinkTimer.Q THEN
+		HMI.bSampleReady := NOT HMI.bSampleReady;
+	END_IF;
+ELSE 
+	HMI.bSwichForPlot := FALSE;
+	
+END_IF; 
+
+
+// for ploting the pistion of the system on vizualizer 
+IF HMI.bSampleReady THEN
+    HMI.arrPayLoadPositions[nIndex] := G_Sensors.fPayLoadPosition; // Store the current position
+    
+    nIndex := nIndex + 1; // Move to the next index
+    IF nIndex > 100 THEN
+        nIndex := 1; // Reset the index to create a circular buffer
+    END_IF;
+    
+   HMI.bSampleReady := FALSE; // Reset the sample trigger
+END_IF;
+
+
+// for ploting the Sin Wave on vizualizer 
+IF HMI.bSampleReady THEN
+    HMI.arrSinPayLoadPositions[nIndex] := G_IO.SinuSignal; // Store the current position
+    
+    nIndex := nIndex + 1; // Move to the next index
+    IF nIndex > 100 THEN
+        nIndex := 1; // Reset the index to create a circular buffer
+    END_IF;
+    
+   HMI.bSampleReady := FALSE; // Reset the sample trigger
+END_IF;
+
+
+
+IF HMI.bActvateSMC THEN
+	IF tBlinkTimer.Q THEN
+		HMI.bSampleReady := NOT HMI.bSampleReady;
+	END_IF;
+ELSE 
+	HMI.bActvateSMC := FALSE;
+	
+END_IF; 
+
+
+// for ploting the pistion of the system on vizualizer 
+IF HMI.bSampleReady THEN
+    HMI.arrPayLoadPositions[nIndex] := G_Sensors.fYokeNormalizedFeedback; // Store the current position
+    
+    nIndex := nIndex + 1; // Move to the next index
+    IF nIndex > 100 THEN
+        nIndex := 1; // Reset the index to create a circular buffer
+    END_IF;
+    
+   HMI.bSampleReady := FALSE; // Reset the sample trigger
+END_IF;
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="P_HMI">
+      <LineId Id="291" Count="0" />
+      <LineId Id="290" Count="0" />
+      <LineId Id="293" Count="0" />
+      <LineId Id="485" Count="3" />
+      <LineId Id="296" Count="1" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="305" Count="0" />
+      <LineId Id="304" Count="0" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="268" Count="0" />
+      <LineId Id="267" Count="0" />
+      <LineId Id="317" Count="3" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="321" Count="2" />
+      <LineId Id="325" Count="0" />
+      <LineId Id="327" Count="0" />
+      <LineId Id="326" Count="0" />
+      <LineId Id="266" Count="0" />
+      <LineId Id="425" Count="8" />
+      <LineId Id="424" Count="0" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="333" Count="0" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="335" Count="9" />
+      <LineId Id="502" Count="1" />
+      <LineId Id="505" Count="9" />
+      <LineId Id="504" Count="0" />
+      <LineId Id="501" Count="0" />
+      <LineId Id="447" Count="1" />
+      <LineId Id="452" Count="20" />
+      <LineId Id="449" Count="2" />
+      <LineId Id="446" Count="0" />
+      <LineId Id="381" Count="0" />
+      <LineId Id="359" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

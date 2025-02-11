@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="DisplacementSumWithFiller" Id="{2ac99bf1-51b9-43f4-8791-22e691600aaa}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK DisplacementSumWithFiller
+VAR_INPUT
+	fSeconderyControlPostionOut: LREAL;
+	c_fDisplacementNormalizedIn: LREAL;
+	P_OutputsbEnableWinch: BOOL;
+END_VAR
+VAR_OUTPUT
+	fOutputSecondaryControl: LREAL;
+END_VAR
+VAR
+	rtb_Lowrign: LREAL;
+	rtb_Lifting: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* Outputs for Atomic SubSystem: '<Root>/DisplacementSumWithFiller' *)
+(* Sum: '<S1>/Sum' *)
+rtb_Lowrign := fSeconderyControlPostionOut + c_fDisplacementNormalizedIn;
+(* Saturate: '<S1>/Lifting' *)
+
+IF rtb_Lowrign > 0.2 THEN 
+    rtb_Lifting := 0.2;
+ELSIF rtb_Lowrign >= 0.0 THEN 
+    rtb_Lifting := rtb_Lowrign;
+ELSE 
+    rtb_Lifting := 0.0;
+END_IF;
+
+(* End of Saturate: '<S1>/Lifting' *)
+
+
+(* Saturate: '<S1>/Lowrign' *)
+
+IF rtb_Lowrign > 0.0 THEN 
+    rtb_Lowrign := 0.0;
+ELSIF rtb_Lowrign < -0.25 THEN 
+    rtb_Lowrign := -0.25;
+END_IF;
+
+(* End of Saturate: '<S1>/Lowrign' *)
+
+
+(* Switch: '<S1>/Switch1' *)
+
+IF P_OutputsbEnableWinch THEN 
+    (* Outport: '<Root>/fOutputSecondaryControl' incorporates:
+     *  Constant: '<S1>/Constant2'
+     *  Sum: '<S1>/Add' *)
+    fOutputSecondaryControl := (rtb_Lifting + rtb_Lowrign) + 0.4;
+ELSE 
+    (* Outport: '<Root>/fOutputSecondaryControl' incorporates:
+     *  Constant: '<S1>/Constant1' *)
+    fOutputSecondaryControl := 0.4;
+END_IF;
+
+(* End of Switch: '<S1>/Switch1' *)
+(* End of Outputs for SubSystem: '<Root>/DisplacementSumWithFiller' *)
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="DisplacementSumWithFiller">
+      <LineId Id="3" Count="43" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
