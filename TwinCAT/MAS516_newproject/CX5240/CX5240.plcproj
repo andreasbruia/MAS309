@@ -21,6 +21,12 @@
     <Compile Include="Enums\E_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Function Blocks\FB_Clock.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Function Blocks\FB_MotionReferenceGenerator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Function Blocks\FB_AnalogInputScaling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
