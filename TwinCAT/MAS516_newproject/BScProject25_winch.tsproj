@@ -63,7 +63,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{CCD62B6E-91A9-4EE1-BE4A-2C5BBAFD4EEA}" Name="CX5240" PrjFilePath="CX5240\CX5240.plcproj" TmcFilePath="CX5240\CX5240.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E6FC28E0-A79C-C1BF-0127-C6275E675094}" TmcPath="CX5240\CX5240.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{29D8B9F5-9EAF-E0AE-9A4F-707C6F07EEEA}" TmcPath="CX5240\CX5240.tmc">
 					<Name>CX5240 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -89,6 +89,10 @@
 						<Var>
 							<Name>G_IO.fWinchValveOut</Name>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_IO.OutTestNew</Name>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -753,7 +757,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04562c52" RevisionNo="#x00110000" PortPhys="19" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1110 EtherCAT extension" Desc="EK1110" PortABoxInfo="#x01000007"/>
 					</Box>
 				</Box>
-				<Box Id="14" Disabled="true" BoxType="9099">
+				<Box Id="14" BoxType="9099">
 					<Name>Term 14 (EK1818)</Name>
 					<ImageId>1004</ImageId>
 					<EtherCAT SlaveType="1" PdiType="#x0d04" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x071a2c52" RevisionNo="#x00120000" RepeatSupport="true" CheckRevisionNoType="3" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1818 EtherCAT IO-Coupler  (1A E-Bus, 8 Ch. Dig. In, 3ms, 4 Ch. Dig. Out 24V, 0,5A)" Desc="EK1818" PortABoxInfo="#x01000008">
@@ -1578,10 +1582,10 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 End Terminal" Desc="EL9011" PortABoxInfo="#x01000006"/>
 					</Box>
 				</Box>
-				<Box Id="13" Disabled="true" BoxType="9099" BoxFlags="#x00000020">
+				<Box Id="13" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Box 13 (Fraba EtherCAT)</Name>
 					<ImageId>1006</ImageId>
-					<EtherCAT SlaveType="3" AdsServerAddress="8027c87e020ef303" PdiType="#x0e05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00004711" ProductCode="#x00000021" RevisionNo="#x00000100" InfoDataAddr="true" InfoDataNetId="true" WdDivider0400="0" DdTime0420="0" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox1="1000" TimeoutMailbox2="10000" GenerateOwnNetId="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="Absolute Rotary Encoder IXARC V01.05" Desc="Fraba EtherCAT" PortABoxInfo="#x01000008">
+					<EtherCAT SlaveType="3" AdsServerAddress="8027c87e020ef403" PdiType="#x0e05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00004711" ProductCode="#x00000021" RevisionNo="#x00000100" InfoDataAddr="true" InfoDataNetId="true" WdDivider0400="0" DdTime0420="0" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox1="1000" TimeoutMailbox2="10000" GenerateOwnNetId="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="Absolute Rotary Encoder IXARC V01.05" Desc="Fraba EtherCAT" PortABoxInfo="#x0200000e">
 						<SyncMan>0010800026000100010000002200c0008000001026010000</SyncMan>
 						<SyncMan>0014800022000100020000002200c0008000001422010000</SyncMan>
 						<SyncMan>001800006400000003000000000000000000001864000000</SyncMan>
@@ -1607,6 +1611,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		<OwnerA Name="TIPC^CX5240^CX5240 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1859)">
 				<Link VarA="PlcTask Inputs^G_IO.bTestNew" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Outputs^G_IO.OutTestNew" VarB="Channel 9^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL3174)">
 				<Link VarA="PlcTask Inputs^G_IO.nTestNew" VarB="AI Standard Channel 1^Value"/>

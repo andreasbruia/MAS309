@@ -16,6 +16,7 @@ VAR
 	fWinchPosRefManual 		: LREAL;
 	fWinchVelRefManual 		: LREAL;
 	fWinchVelRefAuto 		: LREAL;
+	fbJoyTest 				: FB_Joystick;
 END_VAR
 ]]></Declaration>
     <Implementation>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ThDisplacement" Id="{e16617db-8328-4a63-b14e-92f2419c0b31}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ThDisplacement
+VAR_INPUT
+	stParam : ST_Parameters; 
+	fDeltaP : LREAL;
+END_VAR
+VAR_OUTPUT
+	fDisplacement : LREAL;
+END_VAR
+VAR
+	fGravity : LREAL := 9.81; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fDisplacement := (fGravity*stParam.fPayloadMass)/LIMIT(0.000001, fDeltaP*1E5, 400.0*1E5);]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ThDisplacement">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

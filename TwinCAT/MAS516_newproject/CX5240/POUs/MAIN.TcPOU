@@ -89,7 +89,10 @@ ELSE
 	eStatus := E_Status.Checking;
 END_CASE
 
-
+IF G_IO.bTestNew THEN
+	G_IO.OutTestNew := TRUE;
+	ELSE G_IO.OutTestNew := FALSE;
+END_IF
 
 ]]></ST>
     </Implementation>
@@ -113,6 +116,9 @@ END_CASE
       <LineId Id="19" Count="0" />
       <LineId Id="12" Count="0" />
       <LineId Id="14" Count="0" />
+      <LineId Id="248" Count="0" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="249" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="177" Count="0" />
     </LineIds>

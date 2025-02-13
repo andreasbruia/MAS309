@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="F_Sine" Id="{861145ac-0d3d-42b1-b1e7-c434a79e0dab}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_Sine : LREAL
+VAR_INPUT
+	fTime : LREAL;
+END_VAR
+VAR_OUTPUT
+	SinuSignal : LREAL;
+END_VAR
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SinuSignal :=  0.2*SIN(2*PI*fTime/20.0); //unit [m]
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="F_Sine">
+      <LineId Id="7" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

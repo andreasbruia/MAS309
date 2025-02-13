@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{9887cebd-237e-4240-936d-90a74e8a49bb}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	bStatusOk : BOOL;
+	bFault : BOOL := FALSE;
+	eStatus : E_Status := E_Status.Checking;
+	bRunning : BOOL := TRUE;
+	fCycleTime : LREAL:= 0.001;
+	fTime : LREAL:= 0.0;
+	fbPID_FBD : PID_FBD;
+	Clock : FB_Clock; 
+	bTest : BOOL;
+	fTest : LREAL;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[P_Inputs();
+P_Outputs();
+P_MotionControl();
+P_HMI();
+	
+F_Sine(fTime:= fTime, SinuSignal=>G_IO.SinuSignal);
+fbPID_FBD(ssMethodType :=1, In1:= G_IO.PositionError , Out1=> G_IO.PIDout); 
+
+IF G_IO.bEmgOk AND NOT(G_IO.bStopButton) AND NOT(G_IO.bOffSwtich) AND NOT(bFault) THEN
+	bStatusOk := TRUE;
+ELSE 
+	bStatusOk := FALSE;
+END_IF
+
+CASE eStatus OF 
+	E_Status.Checking:
+		IF bFault THEN
+			eStatus := E_Status.Fault;
+		END_IF
+		
+		IF bStatusOk THEN	
+			eStatus := E_Status.Ready;
+		END_IF
+		
+		IF NOT(bStatusOk) THEN	
+			eStatus := E_Status.Off;
+		END_IF
+		
+	E_Status.Off:	
+		IF bStatusOk THEN	
+			eStatus := E_Status.Checking;
+		END_IF
+		
+		IF bFault THEN
+			eStatus := E_Status.Fault;
+		END_IF
+
+	E_Status.Fault:
+		IF NOT(bFault) THEN
+			eStatus := E_Status.Checking;
+		END_IF
+	
+	E_Status.Ready:
+		IF G_IO.bStartButton AND bStatusOk AND NOT(bFault) THEN
+			eStatus := E_Status.Starting;
+		END_IF	
+		
+		IF  NOT(bStatusOk) OR bFault THEN
+			eStatus := E_Status.Checking;
+		END_IF	
+
+	E_Status.Starting:
+		IF bRunning THEN
+			eStatus := E_Status.Running;
+		END_IF 
+		
+		IF bFault OR NOT(bStatusOk)  THEN
+			eStatus := E_Status.Checking;
+		END_IF
+		
+	
+	E_Status.Running:
+	
+		IF G_IO.bStopButton THEN
+			eStatus := E_Status.Stopping;
+		END_IF
+		
+		IF NOT(bRunning) OR NOT(bStatusOk) OR bFault THEN
+			eStatus := E_Status.Checking;
+		END_IF
+	
+	E_Status.Stopping:	
+		IF NOT(bRunning) THEN
+			eStatus := E_Status.Checking;
+		END_IF
+	
+		IF NOT(bStatusOk) OR bFault THEN
+		eStatus := E_Status.Checking;
+		END_IF	
+	
+ELSE 	
+	eStatus := E_Status.Checking;
+END_CASE
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="189" Count="0" />
+      <LineId Id="191" Count="0" />
+      <LineId Id="247" Count="0" />
+      <LineId Id="245" Count="0" />
+      <LineId Id="240" Count="0" />
+      <LineId Id="199" Count="0" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="93" Count="18" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="164" Count="1" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="112" Count="45" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="177" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
