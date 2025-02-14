@@ -63,7 +63,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{CCD62B6E-91A9-4EE1-BE4A-2C5BBAFD4EEA}" Name="CX5240" PrjFilePath="CX5240\CX5240.plcproj" TmcFilePath="CX5240\CX5240.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{29D8B9F5-9EAF-E0AE-9A4F-707C6F07EEEA}" TmcPath="CX5240\CX5240.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CDD29157-6A94-AAE1-EED2-A61D2FB22713}" TmcPath="CX5240\CX5240.tmc">
 					<Name>CX5240 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
