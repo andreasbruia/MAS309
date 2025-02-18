@@ -63,7 +63,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{CCD62B6E-91A9-4EE1-BE4A-2C5BBAFD4EEA}" Name="CX5240" PrjFilePath="CX5240\CX5240.plcproj" TmcFilePath="CX5240\CX5240.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CDD29157-6A94-AAE1-EED2-A61D2FB22713}" TmcPath="CX5240\CX5240.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{5EAD68A1-B7E4-B68F-4D73-9FAE45E7C3B5}" TmcPath="CX5240\CX5240.tmc">
 					<Name>CX5240 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -1633,7 +1633,6 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 14 (EK1818)^Term 11 (EL3174)">
 				<Link VarA="PlcTask Inputs^G_IO.fPDCVMonitor" VarB="AI Standard Channel 1^Value"/>
-				<Link VarA="PlcTask Inputs^G_IO.fPressureWinchB" VarB="AI Standard Channel 3^Value"/>
 				<Link VarA="PlcTask Inputs^G_IO.fYoke" VarB="AI Standard Channel 4^Value"/>
 				<Link VarA="PlcTask Inputs^G_IO.nMoogMonitor" VarB="AI Standard Channel 2^Value"/>
 			</OwnerB>
@@ -1644,6 +1643,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^G_IO.fPressureReturn" VarB="AI Standard Channel 3^Value"/>
 				<Link VarA="PlcTask Inputs^G_IO.fPressureSupply" VarB="AI Standard Channel 2^Value"/>
 				<Link VarA="PlcTask Inputs^G_IO.fPressureWinchA" VarB="AI Standard Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^G_IO.fPressureWinchB" VarB="AI Standard Channel 4^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 14 (EK1818)^Term 5 (EL4032)">
 				<Link VarA="PlcTask Outputs^G_IO.fWinchPDCVOut" VarB="AO Outputs Channel 1^Analog output"/>

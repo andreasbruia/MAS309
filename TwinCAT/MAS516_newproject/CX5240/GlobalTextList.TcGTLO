@@ -96,6 +96,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"616"</v>
+              <v n="TextDefault">"EndStop Override"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"141"</v>
               <v n="TextDefault">"GO TO SETTINGS"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -143,6 +148,16 @@
             <o>
               <v n="TextID">"802"</v>
               <v n="TextDefault">"MOTION LIMITATION: OFF"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"69"</v>
+              <v n="TextDefault">"Neg End Stop"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"444"</v>
+              <v n="TextDefault">"Neg EndStop"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -223,6 +238,16 @@
             <o>
               <v n="TextID">"714"</v>
               <v n="TextDefault">"PID Controller"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"706"</v>
+              <v n="TextDefault">"Pos End Stop"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"398"</v>
+              <v n="TextDefault">"Pos EndStop"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
