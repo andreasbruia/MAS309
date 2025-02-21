@@ -56,8 +56,8 @@
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{7DEF9D13-0B94-4C95-A765-AE6239C77AE2}" Name="Project_V25_Gr3" PrjFilePath="Project_V25_Gr3\Project_V25_Gr3.plcproj" TmcFilePath="Project_V25_Gr3\Project_V25_Gr3.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{28EBE199-55AF-2900-127D-465404A8E679}">
+			<Project GUID="{7DEF9D13-0B94-4C95-A765-AE6239C77AE2}" Name="Project_V25_Gr3" PrjFilePath="Project_V25_Gr3\Project_V25_Gr3.plcproj" TmcFilePath="Project_V25_Gr3\Project_V25_Gr3.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{64DECDC9-E8CE-9BFC-2EE2-25590BB9BC42}" TmcPath="Project_V25_Gr3\Project_V25_Gr3.tmc">
 					<Name>Project_V25_Gr3 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -105,15 +105,15 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>G_IO.bOffSwtich</Name>
+							<Name>G_IO.bOffSwitch</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>G_IO.bManualSwtich</Name>
+							<Name>G_IO.bManualSwitch</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>G_IO.bAutoSwtich</Name>
+							<Name>G_IO.bAutoSwitch</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -179,6 +179,15 @@
 							<Type>INT</Type>
 						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2025-02-21T10:42:51">
+						<OwnerA Name="InputDst" Prefix="TIPC^Project_V25_Gr3^Project_V25_Gr3 Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1818)^Term 8 (EL1008)">
+								<Link VarA="G_IO.bAutoSwtich" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Input" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="G_IO.bManualSwtich" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="G_IO.bOffSwtich" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Input" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
@@ -1552,6 +1561,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^Project_V25_Gr3^Project_V25_Gr3 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 13 (Fraba EtherCAT)">
 				<Link VarA="PlcTask Inputs^G_IO.nWinchEncoderValue" VarB="Encoder^Position Value"/>
@@ -1578,10 +1588,10 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^G_IO.fWinchValveOut" VarB="Channel 1^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1818)^Term 8 (EL1008)">
-				<Link VarA="PlcTask Inputs^G_IO.bAutoSwtich" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^G_IO.bAutoSwitch" VarB="Channel 3^Input"/>
 				<Link VarA="PlcTask Inputs^G_IO.bDisplacementEnable" VarB="Channel 7^Input"/>
-				<Link VarA="PlcTask Inputs^G_IO.bManualSwtich" VarB="Channel 1^Input"/>
-				<Link VarA="PlcTask Inputs^G_IO.bOffSwtich" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^G_IO.bManualSwitch" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^G_IO.bOffSwitch" VarB="Channel 2^Input"/>
 				<Link VarA="PlcTask Inputs^G_IO.bStartButton" VarB="Channel 4^Input"/>
 				<Link VarA="PlcTask Inputs^G_IO.bStopButton" VarB="Channel 5^Input"/>
 				<Link VarA="PlcTask Inputs^G_IO.bWinchEnable" VarB="Channel 6^Input"/>

@@ -7,9 +7,9 @@ VAR_GLOBAL
 	bEmgOk 			     AT %I* : BOOL; 
 	bStartButton 	     AT %I* : BOOL;
 	bStopButton 	     AT %I* : BOOL; 
-	bOffSwtich		     AT %I* : BOOL;  
-	bManualSwtich	     AT %I* : BOOL; 
-	bAutoSwtich			 AT %I* : BOOL; 
+	bOffSwitch		     AT %I* : BOOL;  
+	bManualSwitch	     AT %I* : BOOL; 
+	bAutoSwitch		 AT %I* : BOOL; 
 	bWinchEnable 		 AT %I* : BOOL; 
 	bDisplacementEnable  AT %I* : BOOL;
 	

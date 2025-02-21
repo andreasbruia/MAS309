@@ -26,7 +26,16 @@
     <Compile Include="Enums\E_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Function Blocks\StateMachine_Mode_Selection.TcPOU">
+    <Compile Include="Function Blocks\FB_Joystick.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Function Blocks\FB_Motion_Control.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Function Blocks\FB_StateMachine_Mode_Selection.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Function Blocks\FB_Joystick_Input_Scaling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
@@ -40,6 +49,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Structs\ST_JoystickInputScaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Structs\ST_Parameters.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">
