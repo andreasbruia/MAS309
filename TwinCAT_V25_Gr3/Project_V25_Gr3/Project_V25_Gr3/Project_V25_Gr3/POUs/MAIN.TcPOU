@@ -20,8 +20,7 @@ IF bFunction_Blocks_enable THEN
 END_IF
 
 /////E_status update/////
-fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;
-fb_Joystick_input_Scaling.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
+fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
