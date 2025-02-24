@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Platform" Id="{40c8add9-42db-4476-818f-81c2b51b7ae0}">
+    <Declaration><![CDATA[// Structure for MRU1 (EM8000) translational positions
+TYPE ST_Platform :
+STRUCT
+    // Surge position in meters (forward/backward movement)
+    mru1_surge: REAL;
+
+    // Sway position in meters (left/right movement)
+    mru1_sway: REAL;
+
+    // Heave position in meters (up/down movement)
+    mru1_heave: REAL;
+END_STRUCT
+END_TYPE
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

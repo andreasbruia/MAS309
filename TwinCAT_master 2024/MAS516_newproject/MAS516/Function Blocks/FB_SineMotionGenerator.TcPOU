@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SineMotionGenerator" Id="{bb889dc5-84ee-4609-8a3d-7e3e4675781d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SineMotionGenerator
+VAR_INPUT
+	bEnable: BOOL;
+	fStartPos_m: LREAL;
+	fStartVel_m: LREAL;
+	fDisplacement_m: LREAL;
+	fPeriodeTime: LREAL;
+	Clock: LREAL;
+END_VAR
+VAR_OUTPUT
+	fPosRef_m: LREAL;
+	fVelRef_ms: LREAL;
+END_VAR
+VAR
+	A: LREAL;
+	fPosRef_m_tmp: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* Outputs for Atomic SubSystem: '<Root>/FB_SineMotionGenerator' *)
+(* MATLAB Function: '<S1>/WaveSignal' *)
+(* MATLAB Function 'FB_SineMotionGenerator/WaveSignal': '<S2>:1' *)
+(* '<S2>:1:2' A=x_SP/2; *)
+A := fDisplacement_m / 2.0;
+(* Switch: '<S1>/Switch' incorporates:
+ *  Switch: '<S1>/Switch1' *)
+(* '<S2>:1:3' x0=x0+A; *)
+(* '<S2>:1:5' x = x0+A*cos(2*pi*(1/Ts)*t+pi); *)
+(* '<S2>:1:6' dx = v0-2*pi*A*(1/Ts)*sin(2*pi*(1/Ts)*t+pi); *)
+
+IF bEnable THEN 
+    (* MATLAB Function: '<S1>/WaveSignal' *)
+    fPosRef_m_tmp := (((1.0 / fPeriodeTime) * 6.2831853071795862) * Clock) + 3.1415926535897931;
+    (* Outport: '<Root>/fPosRef_m' incorporates:
+     *  MATLAB Function: '<S1>/WaveSignal' *)
+    fPosRef_m := (COS(fPosRef_m_tmp) * A) + (fStartPos_m + A);
+    (* Outport: '<Root>/fVelRef_ms' incorporates:
+     *  MATLAB Function: '<S1>/WaveSignal' *)
+    fVelRef_ms := fStartVel_m - (SIN(fPosRef_m_tmp) * ((6.2831853071795862 * A) * (1.0 / fPeriodeTime)));
+ELSE 
+    (* Outport: '<Root>/fPosRef_m' *)
+    fPosRef_m := fStartPos_m;
+    (* Outport: '<Root>/fVelRef_ms' *)
+    fVelRef_ms := fStartVel_m;
+END_IF;
+
+(* End of Switch: '<S1>/Switch' *)
+(* End of Outputs for SubSystem: '<Root>/FB_SineMotionGenerator' *)
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SineMotionGenerator">
+      <LineId Id="3" Count="30" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

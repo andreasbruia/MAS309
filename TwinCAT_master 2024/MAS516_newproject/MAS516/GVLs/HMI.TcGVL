@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="HMI" Id="{26f8b220-c366-427c-968e-e98e5cf6b52c}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bEndStopOverride : BOOL; 
+	bBlink : BOOL;
+	
+	arrPayLoadPositions: ARRAY[1..100] OF LREAL; // Array to hold the samples
+	bSampleReady: BOOL; // Trigger to indicate when to sample
+	bSinSampleReady: BOOL; 
+	bSwichForPlot : BOOL; 
+	bSinForPlot : BOOL; 
+	arrSinPayLoadPositions: ARRAY[1..100] OF LREAL; // Array to hold the samples
+	
+	bActvateSMC: BOOL; // Secodery control Swich
+	
+	bStartPBnn : BOOL; 
+	bStopPBnn  : BOOL;
+	
+	bStartTB : BOOL; 
+	bStopTB : BOOL;
+	
+	
+ 
+	bIndicator1 : BOOL;
+	bIndicator2 : BOOL;
+	
+	
+	bData2: LREAL;  
+	bData1: LREAL; 
+	bP_PI : LREAL := 3; 
+	bI_PI : LREAL := 1;
+	// PI for Secoderi Contorl 
+	bProtielGainP_SC: LREAL :=10; //   10 Working with didring prusser suply at 70Bar on 26.05.2024
+	bProtielGainI_SC: LREAL :=50; //   50 Working with didring prusser suply at 70Bar on 26.05.2024
+	// Lapmps
+	bDataP_SC: LREAL; 
+	bDataI_SC: LREAL; 
+	
+	
+	// PID Displacement controler  
+	bProtielGainP_DC: LREAL :=35; // 35  Working with didring prusser suply at 70Bar on 26.05.2024
+	bProtielGainI_DC: LREAL :=100; // 100 Working with didring prusser suply at 70Bar on 26.05.2024
+	bProtielGainD_DC: LREAL :=1;
+		// Lapmps
+	bDataP_DC: LREAL; 
+	bDataI_DC: LREAL;
+	bDataD_DC: LREAL; 
+	// SIN Wave SC Seconderi Control Wave
+	bAmplitudeWave: LREAL := 1.5; // 1.5 Working with didring prusser suply at 70Bar on 26.05.2024
+	bTimePriod : LREAL := 15; //  15 Working with didring prusser suply at 70Bar on 26.05.2024
+	bSwicher : BOOL; 
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

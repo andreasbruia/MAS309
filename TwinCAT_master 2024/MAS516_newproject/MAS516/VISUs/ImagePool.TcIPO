@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <ImagePool Name="ImagePool" Id="{ad4d12cb-da0a-46fa-8573-166151f407d0}">
+    <XmlArchive>
+      <Data>
+        <o xml:space="preserve" t="ImagePoolObject">
+          <v n="UniqueIdGenerator">"4"</v>
+          <l n="BitmapPool" t="ArrayList" cet="ImagePoolItem">
+            <o>
+              <v n="BitmapID">"Logo_UiA"</v>
+              <v n="FileID">"5ce3da45-db07-42e7-a21c-a00fff4ed8f6|IMAGEs\uia-horisontal-uten-navn-Positiv.png"</v>
+              <v n="ItemID">1</v>
+            </o>
+            <o>
+              <v n="BitmapID">""</v>
+              <v n="FileID">""</v>
+              <v n="ItemID">2</v>
+            </o>
+          </l>
+          <v n="GuidInit">{e5bdd478-44d2-433a-901e-cffa63bbbf4e}</v>
+          <v n="GuidReInit">{b26da3c5-7dc0-46ef-8b34-736f71a1bf15}</v>
+          <v n="GuidExitX">{db541a79-a714-4971-a5ae-e3243c6406a8}</v>
+          <v n="ValidIds">false</v>
+        </o>
+      </Data>
+      <TypeList>
+        <Type n="ArrayList">System.Collections.ArrayList</Type>
+        <Type n="Boolean">System.Boolean</Type>
+        <Type n="Guid">System.Guid</Type>
+        <Type n="ImagePoolItem">{215b2719-0347-4e4d-ba85-8bcd66946f66}</Type>
+        <Type n="ImagePoolObject">{bb0b9044-714e-4614-ad3e-33cbdf34d16b}</Type>
+        <Type n="Int32">System.Int32</Type>
+        <Type n="String">System.String</Type>
+      </TypeList>
+    </XmlArchive>
+  </ImagePool>
+</TcPlcObject>

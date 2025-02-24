@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PID_FBD" Id="{7d3f2f66-c88c-40f1-b23d-6eb203d9d2f5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PID_FBD
+VAR_INPUT
+	ssMethodType: SINT;
+	In1: LREAL; 
+END_VAR
+VAR_OUTPUT
+	Out1: LREAL;
+END_VAR
+VAR
+	rtb_DiscreteTransferFcn: LREAL;
+	rtb_Ki: LREAL;
+	c_DiscreteTimeIntegrator_DS: LREAL;
+	DiscreteTransferFcn_states: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+	(*rtb_DiscreteTransferFcn:= 1.0;
+	rtb_Ki:= 500.0; 
+	c_DiscreteTimeIntegrator_DS:= 1.0;
+	DiscreteTransferFcn_states:= 1.0; *)
+	 
+
+
+CASE ssMethodType OF
+    0: 
+        (* SystemInitialize for Atomic SubSystem: '<Root>/Subsystem' *)
+        (* InitializeConditions for DiscreteTransferFcn: '<S1>/Discrete Transfer Fcn' *)
+        DiscreteTransferFcn_states := 0.0;
+        (* InitializeConditions for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        c_DiscreteTimeIntegrator_DS := 0.0;
+        (* End of SystemInitialize for SubSystem: '<Root>/Subsystem' *)
+    1: 
+        (* Outputs for Atomic SubSystem: '<Root>/Subsystem' *)
+        (* DiscreteTransferFcn: '<S1>/Discrete Transfer Fcn' *)
+        rtb_DiscreteTransferFcn := 100.0 * DiscreteTransferFcn_states;
+        (* Gain: '<S1>/Ki' incorporates:
+         *  DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        rtb_Ki := 500.0 * c_DiscreteTimeIntegrator_DS;
+        (* Update for DiscreteTransferFcn: '<S1>/Discrete Transfer Fcn' *)
+        DiscreteTransferFcn_states := In1 - (100.0 * DiscreteTransferFcn_states);
+        (* Update for DiscreteIntegrator: '<S1>/Discrete-Time Integrator' *)
+        c_DiscreteTimeIntegrator_DS := (0.0001 * In1) + c_DiscreteTimeIntegrator_DS;
+        (* Outport: '<Root>/Out1' incorporates:
+         *  Gain: '<S1>/Kd'
+         *  Gain: '<S1>/Kp'
+         *  Sum: '<S1>/Sum5' *)
+        Out1 := ((125.0 * In1) + rtb_Ki) + (7.8125 * rtb_DiscreteTransferFcn);
+        (* End of Outputs for SubSystem: '<Root>/Subsystem' *)
+END_CASE;
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PID_FBD">
+      <LineId Id="81" Count="6" />
+      <LineId Id="4" Count="28" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

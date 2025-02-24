@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Joystick_Input_Scaling" Id="{f799c84b-6800-4554-bc05-8e0cc8249bf6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Joystick_Input_Scaling
+VAR_INPUT
+	nRawInput : INT; 
+	stJoystickInputScaling : ST_JoystickInputScaling;
+	eStatus : E_Status := E_Status.Checking; // bEnable erstatter
+END_VAR
+VAR_OUTPUT
+	fNormalizedOutput : LREAL; 
+END_VAR
+VAR
+	fRawInput : LREAL;
+	fTempInput : LREAL;
+	fTempOutput : LREAL; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fRawInput := INT_TO_LREAL(nRawInput); // konverterer heltallsverdi fra joystick til flyt-verdi, for beregninger med desimaltall
+
+fTempInput := fRawInput - stJoystickInputScaling.fNeutralInputValue; //Midlertidig variabel før normalisering, midtstilling får en verdi nær 0
+
+IF fTempInput > stJoystickInputScaling.fNeutralDeadband THEN
+	fTempOutput := fTempInput/(stJoystickInputScaling.fMaxInputValue - stJoystickInputScaling.fNeutralInputValue);	// Normalisert verdi mellom 0 og 1
+
+ELSIF	fTempInput < -stJoystickInputScaling.fNeutralInputValue THEN 
+	fTempOutput := fTempInput/(stJoystickInputScaling.fMaxInputValue - stJoystickInputScaling.fNeutralInputValue); // Normalisert vedi mellom 0 og -1
+	
+ELSE	
+    fTempOutput := 0.0;
+END_IF
+
+IF eStatus = E_status.Running AND G_IO.bManualSwitch THEN
+	fNormalizedOutput := LIMIT(stJoystickInputScaling.fMinOutputValue, fTempOutput, stJoystickInputScaling.fMaxOutputValue); //setter på limit for å forsikre verdien havner mellom -1 og 1
+	
+ELSE 
+	fNormalizedOutput := 0.0;
+	
+END_IF
+
+
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
