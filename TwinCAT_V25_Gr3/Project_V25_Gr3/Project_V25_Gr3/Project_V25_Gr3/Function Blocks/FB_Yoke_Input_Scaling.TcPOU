@@ -5,15 +5,37 @@
 VAR_INPUT
 	bEnable : BOOL;
 	nRawInput : INT; 
-	stYokeInputScaling : ST_Yoke_Input_Scaling; 
+	stYokeInputScaling : ST_YokeInputScaling; 
 END_VAR
 VAR_OUTPUT
+	fNormalizedOutput : LREAL;
 END_VAR
 VAR
+	fRawInput : LREAL; 
+	fTempInput : LREAL;
+	fTempOutput : LREAL; 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[fRawInput := INT_TO_LREAL(nRawInput);
+
+fTempOutput := nRawInput - stYokeInputScaling.fNeutralInputValue;
+
+IF fTempInput > stYokeInputScaling.fNeutralDeadband THEN
+	fTempOutput := fTempInput/(stYokeInputScaling.fMaxInputValue - stYokeInputScaling.fNeutralInputValue);
+ELSIF fTempInput < - stYokeInputScaling.fNeutralDeadband THEN 
+	fTempOutput := fTempInput/(stYokeInputScaling.fNeutralInputValue - stYokeInputScaling.fMinInputValue);
+ELSE
+	fTempOutput := 0.0; 
+END_IF
+
+IF bEnable THEN
+	fNormalizedOutput := LIMIT(stYokeInputScaling.fMinOutputValue, fTempOutput, stYokeInputScaling.fMaxOutputValue); //setter på limit for å forsikre verdien havner mellom -1 og 1
+	
+ELSE 
+	fNormalizedOutput := 0.0;
+END_IF
+	]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
