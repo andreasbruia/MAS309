@@ -3,10 +3,11 @@
   <POU Name="MAIN" Id="{c73ac2fa-9f2f-4068-bdd8-8eea353345a2}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	bFunction_Blocks_enable						: BOOL := TRUE;
+	bFunction_Blocks_enable				: BOOL := TRUE;
 	fb_StateMachine_Mode_Selection	 	: FB_StateMachine_Mode_Selection;
-	fb_Motion_Control					:FB_Motion_Control;
+	fb_Motion_Control					: FB_Motion_Control;
 	fb_Joystick_input_Scaling			: FB_Joystick_input_Scaling;
+	fb_Joystick							: FB_Joystick;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -15,13 +16,12 @@ IF bFunction_Blocks_enable THEN
 	fb_StateMachine_Mode_Selection();
 	fb_Motion_Control();
 	fb_Joystick_input_Scaling();
-	
+	fb_Joystick();
 	
 END_IF
 
 /////E_status update/////
-fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;
-fb_Joystick_input_Scaling.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
+fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

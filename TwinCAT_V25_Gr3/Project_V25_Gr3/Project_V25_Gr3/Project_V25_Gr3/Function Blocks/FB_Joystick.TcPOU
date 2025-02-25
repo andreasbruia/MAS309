@@ -7,10 +7,28 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+fbJoystickWinch_norm		: FB_Joystick_Input_Scaling;
+fbJoystickRot_norm			:FB_Joystick_Input_Scaling;	
+
+
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[fbJoystickWinch_norm(
+	bEnable := G_IO.bManualSwitch, // SKal vi ha med bAutoSwitch
+	nRawInput := G_IO.fJoyYraw,
+	stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingY,
+	fNormalizedOutput => G_Scaled_values.fJoystickNormalizedY
+	);
+
+fbJoystickRot_norm(
+    bEnable := G_IO.bManualSwitch,
+    nRawInput := G_IO.fJoyZraw, 
+    stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingZ,
+    fNormalizedOutput => G_Scaled_values.fJoystickNormalizedZ
+);
+
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

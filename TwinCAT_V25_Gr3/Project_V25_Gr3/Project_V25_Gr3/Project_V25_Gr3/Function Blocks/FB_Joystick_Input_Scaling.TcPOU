@@ -3,9 +3,9 @@
   <POU Name="FB_Joystick_Input_Scaling" Id="{f799c84b-6800-4554-bc05-8e0cc8249bf6}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Joystick_Input_Scaling
 VAR_INPUT
+	bEnable : BOOL;
 	nRawInput : INT; 
 	stJoystickInputScaling : ST_JoystickInputScaling;
-	eStatus : E_Status := E_Status.Checking; // bEnable erstatter
 END_VAR
 VAR_OUTPUT
 	fNormalizedOutput : LREAL; 
@@ -31,7 +31,7 @@ ELSE
     fTempOutput := 0.0;
 END_IF
 
-IF eStatus = E_status.Running AND G_IO.bManualSwitch THEN
+IF bEnable THEN
 	fNormalizedOutput := LIMIT(stJoystickInputScaling.fMinOutputValue, fTempOutput, stJoystickInputScaling.fMaxOutputValue); //setter på limit for å forsikre verdien havner mellom -1 og 1
 	
 ELSE 
