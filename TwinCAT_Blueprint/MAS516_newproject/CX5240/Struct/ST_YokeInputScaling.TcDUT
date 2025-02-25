@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+=======
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.11">
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
   <DUT Name="ST_YokeInputScaling" Id="{432fbd83-dbc2-4316-9706-7614246cf1d5}">
     <Declaration><![CDATA[TYPE ST_YokeInputScaling :
 STRUCT

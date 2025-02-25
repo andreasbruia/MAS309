@@ -38,6 +38,12 @@
     <Compile Include="Function Blocks\FB_Joystick_Input_Scaling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Function Blocks\FB_Yoke_Input_Scaling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -45,6 +51,17 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="GVLs\G_Parameters.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\G_Scaled_values.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -57,6 +74,12 @@
     <Compile Include="Structs\ST_Parameters.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Structs\ST_YokeInputScaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
     <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
