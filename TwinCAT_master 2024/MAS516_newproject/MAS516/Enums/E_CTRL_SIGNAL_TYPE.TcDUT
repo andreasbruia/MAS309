@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_CTRL_SIGNAL_TYPE" Id="{9f6e9eb5-d504-4789-9fb1-5d414b73e091}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CTRL_SIGNAL_TYPE :
+ ( eCTRL_TRIANGLE := 0,
+   eCTRL_SINUS := 1,
+   eCTRL_SAWTOOTH := 2 );
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>
