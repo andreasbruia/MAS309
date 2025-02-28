@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Joystick" Id="{87d566c3-d570-4e71-b4e7-33d4c6cf1e6e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Joystick
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+<<<<<<< HEAD
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+=======
+fbJoystickWinch_norm		: FB_Joystick_Input_Scaling;
+fbJoystickRot_norm			:FB_Joystick_Input_Scaling;	
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbJoystickWinch_norm(
+	bEnable := G_IO.bManualSwitch, // SKal vi ha med bAutoSwitch
+	nRawInput := G_IO.fJoyYraw,
+	stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingY,
+	fNormalizedOutput => G_Scaled_values.fJoystickNormalizedY
+	);
+
+fbJoystickRot_norm(
+    bEnable := G_IO.bManualSwitch,
+    nRawInput := G_IO.fJoyZraw, 
+    stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingZ,
+    fNormalizedOutput => G_Scaled_values.fJoystickNormalizedZ
+);
+
+]]></ST>
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
+    </Implementation>
+  </POU>
+</TcPlcObject>

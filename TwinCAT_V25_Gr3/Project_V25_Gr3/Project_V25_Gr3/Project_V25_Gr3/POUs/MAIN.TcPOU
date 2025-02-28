@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{c73ac2fa-9f2f-4068-bdd8-8eea353345a2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+<<<<<<< HEAD
+	bFunction_Blocks_enable						: BOOL := TRUE;
+	fb_StateMachine_Mode_Selection	 	: FB_StateMachine_Mode_Selection;
+	fb_Motion_Control					:FB_Motion_Control;
+	fb_Joystick_input_Scaling			: FB_Joystick_input_Scaling;
+=======
+	bFunction_Blocks_enable				: BOOL := TRUE;
+	fb_StateMachine_Mode_Selection	 	: FB_StateMachine_Mode_Selection;
+	fb_Motion_Control					: FB_Motion_Control;
+	fb_Joystick_input_Scaling			: FB_Joystick_input_Scaling;
+	fb_Joystick							: FB_Joystick;
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[/////Function Blocks initialization/////
+IF bFunction_Blocks_enable THEN
+	fb_StateMachine_Mode_Selection();
+	fb_Motion_Control();
+	fb_Joystick_input_Scaling();
+<<<<<<< HEAD
+	
+=======
+	fb_Joystick();
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
+	
+END_IF
+
+/////E_status update/////
+<<<<<<< HEAD
+fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;
+fb_Joystick_input_Scaling.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
+=======
+fb_Motion_Control.eStatus := fb_StateMachine_Mode_Selection.eStatus;]]></ST>
+>>>>>>> 39be3fc96e305d29936f65dffbbc69267e7bf2cf
+    </Implementation>
+  </POU>
+</TcPlcObject>

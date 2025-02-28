@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Yoke_Input_Scaling" Id="{f2a70c25-57f1-440e-bbb9-1cf149bd7ad5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Yoke_Input_Scaling
+VAR_INPUT
+	bEnable : BOOL;
+	nRawInput : INT; 
+	stYokeInputScaling : ST_YokeInputScaling; 
+END_VAR
+VAR_OUTPUT
+	fNormalizedOutput : LREAL;
+END_VAR
+VAR
+	fRawInput : LREAL; 
+	fTempInput : LREAL;
+	fTempOutput : LREAL; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fRawInput := INT_TO_LREAL(nRawInput);
+
+fTempOutput := nRawInput - stYokeInputScaling.fNeutralInputValue;
+
+IF fTempInput > stYokeInputScaling.fNeutralDeadband THEN
+	fTempOutput := fTempInput/(stYokeInputScaling.fMaxInputValue - stYokeInputScaling.fNeutralInputValue);
+ELSIF fTempInput < - stYokeInputScaling.fNeutralDeadband THEN 
+	fTempOutput := fTempInput/(stYokeInputScaling.fNeutralInputValue - stYokeInputScaling.fMinInputValue);
+ELSE
+	fTempOutput := 0.0; 
+END_IF
+
+IF bEnable THEN
+	fNormalizedOutput := LIMIT(stYokeInputScaling.fMinOutputValue, fTempOutput, stYokeInputScaling.fMaxOutputValue); //setter på limit for å forsikre verdien havner mellom -1 og 1
+	
+ELSE 
+	fNormalizedOutput := 0.0;
+END_IF
+	]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
